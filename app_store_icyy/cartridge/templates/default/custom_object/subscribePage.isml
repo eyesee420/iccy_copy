@@ -1,0 +1,9 @@
+<h1>Subscribe</h1>
+
+<form action="${URLUtils.url('Custom_Page-Show')}" method="GET">
+    <input type="text" name="email" placeholder="Email Address">
+    <input type="text" name="name" placeholder="Full Name">
+    <input type="submit" name="button" value="Subscribe">
+</form>
+
+<br>

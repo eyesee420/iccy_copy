@@ -1,0 +1,19 @@
+   <isdecorate template="common/layout/page">
+<isscript>
+        var assets = require('*/cartridge/scripts/assets.js');
+        assets.addJs('/js/productTile.js');
+
+        var shipping = dw.content.ContentMgr.getContent('2-day-shipping-popup');
+        var another = dw.content.ContentMgr.getContent('pagecontent-2');
+    </isscript>
+
+    <!-- +1.888.555.0199 --><!--This phone is a requirement to support existing Gomez monitor of SiteGenesis. Demandware customers can remove this.-->
+ <div class="home-main homepage">
+        <isslot id="home-main-m" description="Main home page slot." context="global" />
+    </div>
+
+    <isprint value="${shipping.custom.body}" encoding="off" />
+        <isprint value="${another.custom.body}" encoding="off" />
+
+
+</isdecorate>

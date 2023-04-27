@@ -1,0 +1,91 @@
+   <isdecorate template="common/layout/page">
+
+   
+   <isscript>
+    
+        var assets = require('*/cartridge/scripts/assets.js');
+        assets.addCss('/css/page_style.css');
+       // assets.addJs('/Custom_object.js');
+
+      var emails = dw.object.CustomObjectMgr.getAllCustomObjects("NewsletterSubscription");
+      var email_list = emails.asList();
+
+       $('.delete_btn').click(function(){
+     var email = 'jaime360@gmail.com';
+     var form_email = dw.object.CustomObjectMgr.getCustomObject("NewsletterSubscription",email_list);
+     var Transaction = require('dw/system/Transaction');
+
+        Transaction.wrap(function () {
+            res.render('error/notFound');
+
+            dw.object.CustomObjectMgr.remove(form_email);
+            res.render('custom_object/delete');
+    });
+       });
+        $('.update_btn').click(function(){
+       });
+ 
+    </isscript>
+
+
+<div class="my_container">
+
+
+
+<div class="form_con">
+
+<form class="form"  action="${URLUtils.url('Custom_object-Save') }" method="POST"> 
+<input type="email" name="email" placeholder="email address">
+<input type="text" name="first_name" placeholder="first name">
+<input type="text" name="last_name" placeholder="last name">
+<input type="text" name="profession" placeholder="profession">
+<br>
+<input class="submit" type="submit" name="button" >
+
+</form>
+</div>
+
+<div class="image_banner">
+    <isslot id="Mybanner" context="global" description="my banner" />
+</div>
+
+</div>
+
+
+
+<div class="data_record">
+<div class="records">
+        <h1>Data Record</h1>
+
+ <table>
+   <tr>
+    <th>Email Address</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Profession</th>
+    <th>Update / Delete</th>
+  </tr>
+<isloop items="${email_list}" var="number" status="loopstatus">
+  <tr>
+    <td><isprint value="${number.custom.email}" encoding="off" /></td>
+    <td><isprint value="${number.custom.first_name}" encoding="off" /></td>
+    <td><isprint value="${number.custom.last_name}" encoding="off" /></td>
+    <td><isprint value="${number.custom.profession}" encoding="off" /></td>
+
+    <td>  <button onclick="delete()" class="delete_btn" type="">Delete</button>
+      <button class="update_btn" type="">Update</button>
+      </td>
+    
+  </tr>
+  </isloop>    
+</table> 
+
+</div>
+
+</div>
+
+
+
+
+
+</isdecorate>
